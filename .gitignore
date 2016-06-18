@@ -1,0 +1,21 @@
+.DS_Store
+
+# Distribution / packaging
+.Python
+env/
+build/
+dist/
+downloads/
+.eggs/
+lib/
+
+
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Django stuff:
+*.log

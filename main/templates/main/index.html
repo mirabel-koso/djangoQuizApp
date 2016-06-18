@@ -1,0 +1,24 @@
+{% extends "main/base.html" %}
+{# Load static file #}
+
+{% block title %}How well do you DJANGO?{% endblock %}
+
+{% block content %}
+        <div class="container">
+            {% if not user.is_anonymous %}
+                <p>Hi {{ user.username }}</p>
+                <h1>Test your DJANGO knowledge</h1>
+            <form>
+                <button class="waves-effect waves-light btn teal lighten-2" type="submit" class="btn btn-success"/>START
+                </button>
+            </form>
+            {% else %}
+            <h3>Welcome, please sign in to continue</h3>
+            <p>
+            <a id="google_login" href="/accounts/google/login" class="btn btn-success teal lighten-2">
+                Sign in with Google
+            </a>
+            </p>
+            {% endif %}
+        </div>
+{% endblock %}

@@ -1,0 +1,43 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>django-quiz</title>
+    {# Load static file #}
+    <link type="text/css" rel="stylesheet" href="{% static 'materialize/bin/materialize.css' %}"  media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="{% static '/main/css/main.css' %}"  media="screen,projection"/>
+    <link href="//fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    {% block head %}{% endblock %}
+</head>
+<body>
+    <nav>
+        <div class="nav-wrapper teal lighten-2">
+          <ul id="nav-mobile" class="right hide-on-med-and-down">
+            {% if user.is_anonymous %}
+                <li><a href="{% url 'user_login'%}">Sign In</a></li>
+                <li><a id="google_login" href="/accounts/google/login">
+                    Sign in with Google
+                  </a></li>
+            {% else %}
+                <li><a href="{% url 'user_logout' %}">Sign Out</a></li>
+            {% endif %}
+          </ul>
+        </div>
+      </nav>
+
+    <div class="wrapper">
+    {% block content %}{% endblock %}
+    </div>
+
+    <script type="text/javascript" src="//code.jquery.com/jquery-2.1.1.min.js"></script>
+
+
+    {% block footer %}
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <script type="text/javascript" src="{% static 'materialize/bin/materialize.js' %}"></script>
+    {% endblock %}
+
+</body>
+</html>
