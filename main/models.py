@@ -62,7 +62,7 @@ from mongoengine import *
 from mongoengine.fields import SequenceField, DateTimeField
 from djangoQuiz.settings import DBNAME
 
-connect(DBNAME)
+connect(DBNAME, host='mongodb://inquizzit:inquizzit@ds025752.mlab.com:25752/heroku_5tgn5grt')
 
 
 class Options(EmbeddedDocument):
