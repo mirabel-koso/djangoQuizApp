@@ -6,12 +6,22 @@
 {% block content %}
         <div class="container">
             {% if not user.is_anonymous %}
+                {% if request.user.username == 'quizadmin' %}
+                <p>WELCOME ADMIN</p>
+                <a href="{% url 'adminquestion' %}" class="waves-effect waves-light btn teal lighten-2" type="submit" class="btn btn-success"/>CREATE QUESTION
+                </a>
+                <a href="{% url 'all_users' %}" class="waves-effect waves-light btn teal lighten-2" type="submit" class="btn btn-success"/>VIEW ALL USERS
+                </a>
+                {% else %}
                 <p>Hi {{ user.username }}</p>
-                <h1>Test your DJANGO knowledge</h1>
+                <h1>Test your knowledge</h1>
+                {% for quiz in quizzes %}
             <form>
-                <button class="waves-effect waves-light btn teal lighten-2" type="submit" class="btn btn-success"/>START
-                </button>
+                <a href="/main/quiz/{{ quiz.name }}/" class="waves-effect waves-light btn teal lighten-2" type="submit" class="btn btn-success"/>{{ quiz.name }} 
+                </a>
             </form>
+                {% endfor %}
+                {% endif %}
             {% else %}
             <h3>Welcome, please sign in to continue</h3>
             <p>

@@ -2,7 +2,7 @@
 
 <div class="container">
     <h1>Test your DJANGO knowledge</h1>
-    <form action="/main/admin/quiz/" method="post">
+    <form action="{% url 'adminquestion' %}" method="post">
       <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
         Quiz Name: <input type="text" name="quiz_name">
         Question: <input type="text" name="question_text">
