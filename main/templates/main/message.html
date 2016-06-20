@@ -1,0 +1,8 @@
+{% if messages %}
+    <div class="alert alert-success alert-dismissible" role="alert">
+        {% for message in messages %}
+            {{ message }}
+            <a class="btn" onclick="Materialize.toast('I am a toast', 4000,'',function(){alert('Hello')})">{{ message }}</a>
+        {% endfor %}
+    </div>
+{% endif %}

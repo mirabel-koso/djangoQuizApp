@@ -1,0 +1,53 @@
+{% extends "main/base.html" %} {% block title %}How well do you DJANGO?{% endblock %} {% block content %}
+<div class="container">
+    {% for quiz_question in quiz_questions %}
+        <form action="/main/quiz/{{quiz_question.name}}/" method="post">
+            <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
+            <div>
+                <h2>{{ quiz_question.name }}</h2>
+                {% for question in quiz_question.question %}
+                <p>{{ question.question_text }}</p>
+                {% for option in question.options %}
+                <ul>
+                    <li>
+                        <p>
+                            <input class="with-gap" name="group{{ question.QID }}" type="radio" id="{{ option.option_one }}xe" value="{{option.option_one}}1" />
+                            <label for="{{ option.option_one }}xe">{{ option.option_one }}</label>
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            <input class="with-gap" name="group{{ question.QID }}" type="radio" id="{{ option.option_two }}wy" value="{{option.option_two}}2" />
+                            <label for="{{ option.option_two }}wy">{{ option.option_two }}</label>
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            <input class="with-gap" name="group{{ question.QID }}" type="radio" id="{{ option.option_three }}re" value="{{option.option_three}}3" />
+                            <label for="{{ option.option_three }}re">{{ option.option_three }}</label>
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            <input class="with-gap" name="group{{ question.QID }}" type="radio" id="{{ option.option_four }}po" value="{{option.option_four}}4" />
+                            <label for="{{ option.option_four }}po">{{ option.option_four }}</label>
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            <input class="with-gap" name="group{{ question.QID }}" type="radio" id="{{ option.option_five }}ji" value="{{option.option_five}}5" />
+                            <label for="{{ option.option_five }}ji">{{ option.option_five }}</label>
+                        </p>
+                    </li>
+                </ul>
+                {% endfor %}
+                <input type="hidden" value="{{ question.QID }}admin{{ question.answer }}" name="{{ question.QID }}">
+                {% endfor %}
+            </div>
+            <button class="waves-effect waves-light btn teal lighten-2" type="submit" class="btn btn-success" />SUBMIT
+        </button>
+        </form>
+    {% endfor %}
+
+</div>
+{% endblock %}

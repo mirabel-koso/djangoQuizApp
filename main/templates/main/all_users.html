@@ -1,0 +1,32 @@
+
+{% block content %}
+        <div class="container">
+            {% if request.user.username == 'quizadmin' %}
+
+                <table class="centered responsive-table">
+                    <thead>
+                        <tr>
+                            <th data-field="name">USER</th>
+                            <th data-field="course">COURSE</th>
+                            <th data-field="score">SCORE</th>
+                        </tr>
+                    </thead>
+
+                    {% for users in user_detail %}
+                            <tbody>
+                                <tr>
+                                    <td>{{ users.username }}</td>
+                                    {% for details in users.user_detail %}
+                                        <td>{{ details.course_name}}</td>
+                                        <td>{{ details.score}}</td>
+                                    {% endfor %}
+                                </tr>
+                            </tbody>
+                    {% endfor %}
+                </table>
+
+            {% else %}
+                <a href="{% url 'home_view' %}" class="btn btn-success teal lighten-2"> GO BACK TO HOME
+            {% endif %}
+        </div>
+{% endblock %}
