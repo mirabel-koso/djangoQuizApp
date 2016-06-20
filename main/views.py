@@ -42,13 +42,9 @@ class AdminView(TemplateView):
             question_text=question_text,
             answer=question_answer,
             options=[options])
-        # question.save()
         quizname = Quiz.objects(name=quiz_name)
         if quizname:
             quizname.update(push__question=question)
-            # error_message = 'Only 5 questions allowed'
-            # messages.add_message(request, messages.INFO, error_message)
-            # return render(request, 'main/admin.html')
 
         else:
             quiz = Quiz(
@@ -107,7 +103,7 @@ class TakeQuizView(TemplateView):
 
         user_already_exist = UserDetails.objects(username=request.user.username)
         if user_already_exist:
-            UserDetails.update(push__user_detail=details)
+            user_already_exist.update(push__user_detail=details)
         else:
             user_details = UserDetails(
                 username=request.user.username,
@@ -116,4 +112,13 @@ class TakeQuizView(TemplateView):
 
             user_details.save()
 
-        return HttpResponseRedirect(reverse_lazy('home_view'))
+        return HttpResponseRedirect(reverse_lazy('user_profile'))
+
+
+class UserProfile(TemplateView):
+    template_name = 'main/user_profile.html'
+
+    def get(self, request, *args, **kwargs):
+        context = self.get_context_data(**kwargs)
+        context['one_user_detail'] = UserDetails.objects(username=request.user.username)
+        return self.render_to_response(context)

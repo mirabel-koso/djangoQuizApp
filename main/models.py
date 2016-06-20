@@ -59,7 +59,7 @@
 #         return ", ".join([question.text for question in self.questions.all()])
 
 from mongoengine import *
-from mongoengine.fields import SequenceField
+from mongoengine.fields import SequenceField, DateTimeField
 from djangoQuiz.settings import DBNAME
 
 connect(DBNAME)
@@ -96,6 +96,7 @@ class Quiz(Document):
 class Detail(EmbeddedDocument):
     score = IntField(max_length=200, required=True)
     course_name = StringField(max_length=200, required=True)
+    date = DateTimeField()
 
 
 class UserDetails(Document):

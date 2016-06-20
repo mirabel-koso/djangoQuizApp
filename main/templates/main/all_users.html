@@ -1,4 +1,4 @@
-
+{% extends "main/base.html" %} {% block title %}How well do you DJANGO?{% endblock %}
 {% block content %}
         <div class="container">
             {% if request.user.username == 'quizadmin' %}
@@ -22,11 +22,15 @@
                                     {% endfor %}
                                 </tr>
                             </tbody>
+                            {% empty %}
+                        <p>No user Available</p>
                     {% endfor %}
                 </table>
 
             {% else %}
+                <p>Oops...only admin allowed</p>
                 <a href="{% url 'home_view' %}" class="btn btn-success teal lighten-2"> GO BACK TO HOME
             {% endif %}
+            
         </div>
 {% endblock %}

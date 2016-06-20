@@ -16,4 +16,8 @@ urlpatterns = [
         views.ViewUsers.as_view(),
         name='all_users'
         ),
+    url(r'^user/profile$',
+        views.UserProfile.as_view(),
+        name='user_profile'
+        ),
 ]
