@@ -4,8 +4,6 @@ from django.views.generic.base import TemplateView
 from main.models import Quiz, Options, Question, UserDetails, Detail
 from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse_lazy
-from django.contrib.auth.decorators import login_required
-from django.utils.decorators import method_decorator
 
 
 class HomeView(TemplateView):
