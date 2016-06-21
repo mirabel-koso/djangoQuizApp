@@ -3,29 +3,19 @@
         <div class="container">
             {% if request.user.username == 'quizadmin' %}
 
-                <table class="centered responsive-table">
-                    <thead>
-                        <tr>
-                            <th data-field="name">USER</th>
-                            <th data-field="course">COURSE</th>
-                            <th data-field="score">SCORE</th>
-                        </tr>
-                    </thead>
 
-                    {% for users in user_detail %}
-                            <tbody>
-                                <tr>
-                                    <td>{{ users.username }}</td>
-                                    {% for details in users.user_detail %}
-                                        <td>{{ details.course_name}}</td>
-                                        <td>{{ details.score}}%</td>
-                                    {% endfor %}
-                                </tr>
-                            </tbody>
-                            {% empty %}
-                        <p>No user Available</p>
+
+                {% for users in user_detail %}
+                    <h3>{{ users.username }}</h3>
+                    {% for details in users.user_detail %}
+                        <ul id="display-inline-block">
+                            <li>{{ details.course_name}}</li>
+                            <li>{{ details.score}}%</li>
+                        </ul>
                     {% endfor %}
-                </table>
+                    {% empty %}
+                    <p>No user Available</p>
+                {% endfor %}
 
             {% else %}
                 <p>Oops...only admin allowed</p>
