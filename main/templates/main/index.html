@@ -24,7 +24,7 @@
             {% else %}
             <h3 class="index-text">Welcome, please sign in to continue</h3>
             <p>
-            <a id="google_login" href="/accounts/google/login" class="btn btn-success teal lighten-2">
+            <a id="google_login" href="/accounts/google/login" next="{% url 'home_view' %}" class="btn btn-success teal lighten-2">
                 Sign in with Google
             </a>
             </p>
