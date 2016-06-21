@@ -14,11 +14,11 @@ footer {
 
 body {
     /*background-image: url("../img/background.jpg");*/
-    background: #EDEDED
+    background: #C0C0C0;
 }
 
 .index-text {
-    padding-top: 150px;
+    padding-top: 250px;
     font-family: Helvetica, Arial, cursive;
 }
 

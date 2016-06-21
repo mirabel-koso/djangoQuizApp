@@ -25,7 +25,7 @@
                 {% else %}
                     <li><a href="{% url 'user_logout' %}">Sign Out</a></li>
                     {% if not request.user.username == 'quizadmin' %}
-                        <li><a href="{% url 'user_profile' %}">profile</a></li>
+                        <li><a href="{% url 'user_profile' %}">{{ user.username }}</a></li>
                     {% endif %}
                 {% endif %}
             </ul>

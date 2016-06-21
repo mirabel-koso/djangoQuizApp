@@ -34,7 +34,9 @@ urlpatterns += patterns(
         name='user_logout'
         ),
     url(r'^main/', include('main.urls')),
-    url(r'^accounts/', include('allauth.urls'), name='google_login'),
+    url(r'^accounts/',
+        include('allauth.urls'),
+        name='google_login'),
 
 )
 

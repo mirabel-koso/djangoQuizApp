@@ -67,7 +67,7 @@ ROOT_URLCONF = 'djangoQuiz.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['main/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -147,3 +147,8 @@ ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_EMAIL_VERIFICATION = "none"
 SOCIALACCOUNT_QUERY_EMAIL = True
 LOGIN_REDIRECT_URL = 'home_view'
+
+SOCIALACCOUNT_PROVIDERS = \
+    {'google':
+        {'SCOPE': ['profile', 'email'],
+            'AUTH_PARAMS': {'access_type': 'online'}}}
