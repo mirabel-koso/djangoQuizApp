@@ -107,13 +107,8 @@ class TakeQuizView(TemplateView):
                 question[key[-1]] = value[-1]
         val = []
         for key in answer:
-            print key, 'key'
             if key.isdigit():
-                print key, 'key2'
                 val.append(int(key))
-        print val, 'val'
-        print question
-        print answer
 
         min_val = min(val)
 
@@ -123,8 +118,6 @@ class TakeQuizView(TemplateView):
             if question.get(str(num)) == answer.get(str(num)):
                 count = count + 1
         score = (count / float(len(question)) * 100)
-        print count, 'count'
-        print score
 
         details = Detail(
             score=score,
