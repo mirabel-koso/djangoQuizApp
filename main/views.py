@@ -117,7 +117,7 @@ class TakeQuizView(TemplateView):
             num = i + min_val
             if question.get(str(num)) == answer.get(str(num)):
                 count = count + 1
-        score = (count / float(len(question)) * 100)
+        score = round((count / float(len(question)) * 100))
 
         details = Detail(
             score=score,
