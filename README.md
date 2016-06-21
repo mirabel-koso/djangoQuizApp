@@ -1,1 +1,3 @@
-# djangoQuizApp
+# INQUIZZIT
+A Django Quiz App
+
