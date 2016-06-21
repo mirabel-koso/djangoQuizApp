@@ -5,6 +5,8 @@ from main.models import Quiz, Options, Question, UserDetails, Detail
 from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse_lazy
 
+from main.score import calculate_score
+
 
 class HomeView(TemplateView):
     template_name = 'main/index.html'
@@ -97,33 +99,11 @@ class TakeQuizView(TemplateView):
 
     def post(self, request, *args, **kwargs):
         quiz_name = self.kwargs.get('quizname')
-        question = {}
-        answer = {}
-        name = request.POST
-        for key, value in name.iteritems():
-            if key.isdigit():
-                answer[key] = value[-1]
-            if key.startswith('group'):
-                question[key[-1]] = value[-1]
-        val = []
-        for key in answer:
-            if key.isdigit():
-                val.append(int(key))
-
-        min_val = min(val)
-
-        count = 0
-        for i in xrange(len(question)):
-            num = i + min_val
-            if question.get(str(num)) == answer.get(str(num)):
-                count = count + 1
-        score = round((count / float(len(question)) * 100))
-
+        user_score = calculate_score(request.POST)
         details = Detail(
-            score=score,
+            score=user_score,
             course_name=quiz_name
         )
-
         user_already_exist = UserDetails.objects(username=request.user.username)
         if user_already_exist:
             user_already_exist.update(push__user_detail=details)
@@ -132,10 +112,8 @@ class TakeQuizView(TemplateView):
                 username=request.user.username,
                 user_detail=[details]
             )
-
             user_details.save()
-
-        return HttpResponseRedirect(reverse_lazy('result', kwargs={'score': score}))
+        return HttpResponseRedirect(reverse_lazy('result', kwargs={'score': user_score}))
 
 
 class ResultView(TemplateView):

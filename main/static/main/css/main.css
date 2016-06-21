@@ -22,6 +22,22 @@ body {
     font-family: Helvetica, Arial, cursive;
 }
 
+.quiz-option {
+    color: #222!important;
+}
+
 .logo {
     font-family: "Kaushan Script", "Helvetica Neue", Helvetica, Arial, cursive;
+}
+
+ul#display-inline-block,
+ul#display-inline-block li {
+margin: 0;
+padding: 0;
+}
+ 
+ul#display-inline-block li {
+display: inline-block;
+width: 100px;
+min-height: 100px;
 }
