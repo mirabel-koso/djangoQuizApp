@@ -1,7 +1,7 @@
 {% extends "main/base.html" %}
 {# Load static file #}
 
-{% block title %}How well do you DJANGO?{% endblock %}
+{% block title %}Index{% endblock %}
 
 {% block content %}
         <div class="container">
@@ -13,8 +13,7 @@
                 <a href="{% url 'all_users' %}" class="waves-effect waves-light btn teal lighten-2" type="submit" class="btn btn-success"/>VIEW ALL USERS
                 </a>
                 {% else %}
-                <p>Hi {{ user.username }}</p>
-                <h1>Test your knowledge</h1>
+                <h3 style="padding-top: 100px;">Test your knowledge </h3>
                 {% for quiz in quizzes %}
             <form>
                 <a href="/main/quiz/{{ quiz.name }}/" class="waves-effect waves-light btn teal lighten-2" type="submit" class="btn btn-success"/>{{ quiz.name }} 
@@ -23,7 +22,7 @@
                 {% endfor %}
                 {% endif %}
             {% else %}
-            <h3>Welcome, please sign in to continue</h3>
+            <h3 class="index-text">Welcome, please sign in to continue</h3>
             <p>
             <a id="google_login" href="/accounts/google/login" class="btn btn-success teal lighten-2">
                 Sign in with Google

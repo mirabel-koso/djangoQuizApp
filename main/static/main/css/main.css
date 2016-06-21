@@ -1,0 +1,27 @@
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+footer {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 50px;
+    width: 100%;
+    overflow: hidden;
+}
+
+body {
+    /*background-image: url("../img/background.jpg");*/
+    background: #EDEDED
+}
+
+.index-text {
+    padding-top: 150px;
+    font-family: Helvetica, Arial, cursive;
+}
+
+.logo {
+    font-family: "Kaushan Script", "Helvetica Neue", Helvetica, Arial, cursive;
+}

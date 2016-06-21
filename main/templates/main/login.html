@@ -1,34 +1,12 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-    <title>Please Log in</title>
-</head>
-
-<body>
-    <nav>
-        <div class="nav-wrapper teal lighten-2">
-          <ul id="nav-mobile" class="right hide-on-med-and-down">
-            {% if user.is_anonymous %}
-                <li><a href="{% url 'user_login'%}">Sign In</a></li>
-                <li><a id="google_login" href="/accounts/google/login">
-                    Sign in with Google
-                  </a></li>
-            {% else %}
-                <li><a href="{% url 'user_logout' %}">Sign Out</a></li>
-            {% endif %}
-          </ul>
-        </div>
-    </nav>
+{% extends "main/base.html" %} {% block title %}How well do you DJANGO?{% endblock %}
+{% block content %}
     {% if form.errors %}
         <p class="text-warning">You username and password do not match. please try again!!!</p>
     {% endif %}
         <form role="form" class="form-horizontal" method="POST" action="{% url 'user_login' %}">
             {% csrf_token %}
             {{ form }}
-            <input class="btn btn-primary" type="submit" value="Login">
+            <input class="btn btn-success teal lighten-2" type="submit" value="Login">
             <input type="hidden" name="next" value="{{ next }}">
         </form>
-</body>
-
-</html>
+{% endblock %}

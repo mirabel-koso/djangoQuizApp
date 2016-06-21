@@ -7,15 +7,15 @@
     {# Load static file #}
     <link type="text/css" rel="stylesheet" href="{% static 'materialize/bin/materialize.css' %}"  media="screen,projection"/>
     <link type="text/css" rel="stylesheet" href="{% static 'main/css/main.css' %}"  media="screen,projection"/>
-    <link href="//fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
     <meta name="google-site-verification" content="hjROlCPBiFje_tO0mc5a2p7MyFottbTxNIogz3fNCz8" />
 
     {% block head %}{% endblock %}
 </head>
-<body>
+<body class="page-background">
     <nav>
         <div class="nav-wrapper teal lighten-2">
-            <a href="{% url 'home_view' %}" class="brand-logo"> QUIZUP</a>
+            <a href="{% url 'home_view' %}" class="brand-logo logo"> INQUIZZIT</a>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
                 {% if user.is_anonymous %}
                     <li><a id="google_login" href="/accounts/google/login">
@@ -45,4 +45,11 @@
     {% endblock %}
 
 </body>
+<!-- <footer class="page-footer teal lighten-2">
+    <div>
+        <div class="container">
+            &copy 2016 mirabel_ekwenugo
+        </div>
+    </div>
+</footer> -->
 </html>

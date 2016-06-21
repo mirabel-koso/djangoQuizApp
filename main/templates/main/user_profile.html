@@ -1,13 +1,13 @@
-{% extends "main/base.html" %} {% block title %}How well do you DJANGO?{% endblock %}
+{% extends "main/base.html" %} {% block title %}Profile{% endblock %}
 {% block content %}
         <div class="container">
             {% if not user.is_anonymous %}
 
                 {% for user in one_user_detail%}
                     <p>Hello {{ user.username }}, Below are all you scores</p>
-                    {% for scores in user.user_detail %}
+                    {% for scores in user.user_detail%}
                         <p>{{ scores.course_name }}</p>
-                        <p>{{ scores.score }}</p>
+                        <p>{{ scores.score }} %</p>
                         <p>{{ scores.date_created }}</p>
                     {% endfor %}
                 {% endfor %}
