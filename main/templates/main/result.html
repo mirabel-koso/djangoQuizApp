@@ -5,6 +5,8 @@
 
 {% block content %}
         <div class="container">
-                <p>Your score is {{ score }}</p>
+                <h3>Your score is {{ score }} %</h3>
+                <a class="btn btn-success teal lighten-2" href="{% url 'home_view' %}"> GO BACK TO HOME</a>
         </div>
+
 {% endblock %}
