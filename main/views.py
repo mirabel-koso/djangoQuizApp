@@ -22,8 +22,7 @@ class AdminView(TemplateView):
 
     def dispatch(self, request, *args, **kwargs):
         if request.user.username == 'quizadmin':
-            return HttpResponseRedirect(
-                reverse_lazy('adminquestion'))
+            pass
         else:
             return HttpResponseRedirect(
                 reverse_lazy('home_view'))
@@ -165,7 +164,7 @@ class ResultView(TemplateView):
         return self.render_to_response(context)
 
 
-class UserProfile(TemplateView):
+class UserProfileView(TemplateView):
     template_name = 'main/user_profile.html'
 
     def dispatch(self, request, *args, **kwargs):
@@ -174,9 +173,17 @@ class UserProfile(TemplateView):
         else:
             return HttpResponseRedirect(
                 reverse_lazy('home_view'))
-        return super(UserProfile, self).dispatch(request, *args, **kwargs)
+        return super(UserProfileView, self).dispatch(request, *args, **kwargs)
 
     def get(self, request, *args, **kwargs):
         context = self.get_context_data(**kwargs)
         context['one_user_detail'] = UserDetails.objects(username=request.user.username)
         return self.render_to_response(context)
+
+
+def custom_404(request):
+    return render(request, 'main/404.html')
+
+
+def custom_500(request):
+    return render(request, 'main/500.html')

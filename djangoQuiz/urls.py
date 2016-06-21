@@ -37,3 +37,6 @@ urlpatterns += patterns(
     url(r'^accounts/', include('allauth.urls'), name='google_login'),
 
 )
+
+handler404 = 'main.views.custom_404'
+handler500 = 'main.views.custom_500'

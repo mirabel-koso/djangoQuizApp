@@ -17,7 +17,7 @@ urlpatterns = [
         name='all_users'
         ),
     url(r'^user/profile$',
-        views.UserProfile.as_view(),
+        views.UserProfileView.as_view(),
         name='user_profile'
         ),
     url(r'^result/(?P<score>[0-9].+)/$',

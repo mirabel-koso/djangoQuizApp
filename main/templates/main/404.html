@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<center><h1 class="error-page" style="font-size: 180px;">4<img src="https://cdn2.iconfinder.com/data/icons/windows-8-metro-style/128/sad.png">4</h1></center>
+    <center><h1 style="color:#333333">Oops, Page Not Found !</h1></center>
+
+    <center><a href="{% url 'home_view' %}"><button class="btn btn-success edit-submit grn txt">Go Back to home</button></a></center>
+    </center>
+{% endblock content %}
