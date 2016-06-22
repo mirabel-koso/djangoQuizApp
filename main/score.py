@@ -4,9 +4,13 @@ def calculate_score(request_dict):
     answer = {}
     for key, value in request_dict.iteritems():
         if key.isdigit():
-            answer[key] = value[-1]
+            key_to_string = str(key)
+            x = str(filter(str.isdigit, key_to_string))
+            answer[x] = value[-1]
         if key.startswith('group'):
-            question[key[-1]] = value[-1]
+            key_to_string = str(key)
+            y = str(filter(str.isdigit, key_to_string))
+            question[y] = value[-1]
     temp_array_value = []
     for key in answer:
         if key.isdigit():
