@@ -17,7 +17,6 @@ class HomeView(TemplateView):
         context['quizzes'] = Quiz.objects.all()
         return self.render_to_response(context)
 
-
 class AdminView(TemplateView):
 
     template_name = 'main/admin.html'
